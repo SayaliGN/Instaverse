@@ -27,7 +27,7 @@ A full-stack MERN (MongoDB, Express.js, React, Node.js) application where users 
 ## 🛠️ Setup Instructions
 
 ```bash
-git clone https://github.com/SayaliGN/instaverse-project.git
+git clone https://github.com/SayaliGN/Instaverse
 cd instaverse
 
 ✅ 2. Setup Frontend
