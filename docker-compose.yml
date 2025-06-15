@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+  backend:
+    build: ./server
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/instaverse
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+    command: nodemon index.js
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

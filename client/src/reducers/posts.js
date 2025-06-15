@@ -1,15 +1,11 @@
-// src/reducers/posts.js
-
-const initialState = []; // 👈 initialState defined kar diya
-
-const postsReducer = (state = initialState, action) => {
+const postsReducer = (posts = [], action) => {
   switch (action.type) {
     case "FETCH_ALL":
       return action.payload;
     case "CREATE":
-      return [...state, action.payload];
+      return [...posts, action.payload];
     default:
-      return state;
+      return posts;
   }
 };
 
