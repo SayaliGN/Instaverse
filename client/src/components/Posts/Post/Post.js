@@ -21,9 +21,12 @@ import {
 } from "./styles";
 
 const Post = ({ post }) => {
+  
   return (
     <StyledCard>
+    
       <StyledMedia image={post.selectedFile} title={post.title} />
+      
       
       <Overlay>
         <Typography variant="h6">{post.creator}</Typography>

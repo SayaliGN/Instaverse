@@ -11,12 +11,18 @@ export const StyledCard = styled(Card)(({ theme }) => ({
   position: 'relative',
 }));
 
-export const StyledMedia = styled(CardMedia)(() => ({
+export const StyledMedia = styled('div')(({ image }) => ({
   height: 0,
-  paddingTop: '56.25%', // 16:9 ratio
+  paddingTop: '56.25%',
+  backgroundImage: `url(${image})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
   backgroundBlendMode: 'darken',
 }));
+
+
 
 export const Overlay = styled('div')(() => ({
   position: 'absolute',
