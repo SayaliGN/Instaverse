@@ -1,16 +1,15 @@
-# server/Dockerfile
-
+# 1. Base image
 FROM node:20
 
+# 2. Set working directory
 WORKDIR /app
 
+# 3. Copy package files and install dependencies
 COPY package.json package-lock.json ./
 RUN npm install
 
-# Install nodemon globally (already in your package.json too)
-RUN npm install -g nodemon
-
+# 4. Copy source code
 COPY . .
 
-# Default command
-CMD ["nodemon", "index.js"]
+# 5. Default command (optional here; overridden by docker-compose)
+CMD ["npm", "start"]

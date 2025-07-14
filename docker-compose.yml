@@ -1,28 +1,27 @@
-version: '3.8'
-
 services:
   frontend:
-    build: ./client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - ./client:/app
-      - /app/node_modules
     depends_on:
       - backend
+    environment:
+      - REACT_APP_API_BASE_URL=http://localhost:5000
 
   backend:
-    build: ./server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     environment:
       - MONGO_URL=mongodb://mongo:27017/instaverse
-    volumes:
-      - ./server:/app
-      - /app/node_modules
+      - JWT_SECRET=your_jwt_secret_here
     depends_on:
       - mongo
-    command: nodemon index.js
+    command: npm start
 
   mongo:
     image: mongo
